@@ -57,6 +57,8 @@ class _CabinetScreenState extends State<CabinetScreen> {
     );
   }
 
+  ///добавлен коммент
+
   List<dynamic> userData = [
     {
       'icon': 'basket',
