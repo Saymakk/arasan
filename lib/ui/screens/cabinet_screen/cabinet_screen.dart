@@ -57,15 +57,13 @@ class _CabinetScreenState extends State<CabinetScreen> {
     );
   }
 
-  ///добавлен коммент
-
   List<dynamic> userData = [
     {
       'icon': 'basket',
       'title': 'Активные покупки',
       'bool': true,
       'type': 'route',
-      'route': 'basket'
+      'route': 'activeShopping'
     },
     {
       'icon': 'hearth',
