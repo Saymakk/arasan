@@ -1,0 +1,49 @@
+name: arasan
+description: Arasan. Wellness & Spa
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  get: ^4.6.5
+  hive_flutter: ^1.1.0
+  google_fonts: ^3.0.1
+  flutter_svg: ^2.0.0+1
+  intl_phone_number_input: ^0.7.2
+  mask_text_input_formatter: ^2.4.0
+  pinput: ^2.2.23
+  oktoast: ^3.3.1
+  dio: ^4.0.6
+  flutter_bloc: ^8.1.2
+  image_picker: ^0.8.6+4
+  url_launcher: ^6.1.10
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+  flutter_native_splash: ^2.2.18
+
+flutter_native_splash:
+  color: "ffffff"
+  image: assets/images/logo.png
+
+flutter:
+
+  uses-material-design: true
+
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/
