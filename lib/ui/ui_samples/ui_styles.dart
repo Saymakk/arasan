@@ -10,6 +10,10 @@ class Styles {
         fontWeight: FontWeight.w400, fontSize: 16, color: Color(0xff8c8c8c));
   }
 
+  TextStyle cardTitle(){
+    return GoogleFonts.roboto(fontSize: 18, fontWeight: FontWeight.w400, color: Color(0xff1e1e1e));
+  }
+
   TextStyle textTitleField() {
     return GoogleFonts.roboto(
         fontWeight: FontWeight.w400, fontSize: 14, color: Color(0xff1e1e1e));
