@@ -4,6 +4,7 @@ import 'package:arasan/ui/screens/cabinet_screen/personal_data_screen/closet_his
 import 'package:arasan/ui/screens/cabinet_screen/personal_data_screen/favorites_screen/favorites_screen.dart';
 import 'package:arasan/ui/screens/cabinet_screen/personal_data_screen/payments_screen/payments_screen.dart';
 import 'package:arasan/ui/screens/cabinet_screen/personal_data_screen/sertificates_screen/sertificates_screen.dart';
+import 'package:arasan/ui/screens/cabinet_screen/personal_data_screen/shop_screen/active_shop_details/active_shop_details.dart';
 import 'package:arasan/ui/screens/cabinet_screen/personal_data_screen/shop_screen/shop_screen.dart';
 import 'package:arasan/ui/screens/cabinet_screen/profile_screen/profile_screen.dart';
 import 'package:arasan/ui/screens/cabinet_screen/settings_screen/faq_screen/faq_screen.dart';
@@ -127,6 +128,11 @@ GetPage(
     GetPage(
         name: '/profile',
         page: () =>  ProfileScreen(),
+        transition: Transition.rightToLeft),
+
+    GetPage(
+        name: '/activeShopDetails',
+        page: () =>  ActiveShopDetailsScreen(),
         transition: Transition.rightToLeft),
 
   ];

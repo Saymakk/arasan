@@ -1,14 +1,24 @@
+import 'dart:io';
+
 import 'package:arasan/widgets/app_bars.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../constants/assets_const.dart';
 import '../../../ui_samples/ui_samples.dart';
 import '../../../ui_samples/ui_styles.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class ProfileScreen extends StatefulWidget {
+  ProfileScreen({Key? key}) : super(key: key);
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     TextEditingController nameController = TextEditingController();
@@ -61,7 +71,8 @@ class ProfileScreen extends StatelessWidget {
                 SizedBox(
                     height: 44,
                     width: double.infinity,
-                    child: Samples().filledOutlinedButton('Сохранить', false, 'save_profile', null)),
+                    child: Samples().filledOutlinedButton(
+                        'Сохранить', false, 'save_profile', null)),
               ],
             ),
           ),
@@ -73,16 +84,33 @@ class ProfileScreen extends StatelessWidget {
   Widget profilePhoto() {
     return Column(
       children: [
-        CircleAvatar(
-          radius: 50,
-          backgroundImage: AssetImage(Assets().icn + 'cabinet_avatar.png'),
-          backgroundColor: Colors.transparent,
+        Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+              color: Color(0xffefefef),
+              borderRadius: BorderRadius.circular(50)),
+          child: Center(
+              child: ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: image != null
+                ? Container(
+                    width: 100,
+                    height: 100,
+                    child: Image.file(
+                      image!,
+                      fit: BoxFit.fill,
+                    ))
+                : SvgPicture.asset(Assets().icn + 'photo.svg'),
+          )),
         ),
         SizedBox(
           height: 8,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            pickImage();
+          },
           child: Text(
             'Изменить фото профиля',
             style: Styles()
@@ -107,5 +135,20 @@ class ProfileScreen extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  File? image;
+
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.camera);
+      if (image == null) return;
+
+      final firstSideImageTemp = File(image.path);
+
+      setState(() => this.image = firstSideImageTemp);
+    } on PlatformException catch (e) {
+      print('Failed $e');
+    }
   }
 }

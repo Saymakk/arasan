@@ -158,12 +158,12 @@ class Samples {
         if (comment != 'get_off_all' || comment != 'save_profile') {
           isAction == true ? Get.toNamed('/$comment', arguments: args) : null;
         }
-        if(comment == 'save_profile'){
+        if (comment == 'save_profile') {
           ///ЗДЕСЬ БУДЕТ РЕКВЕСТ НА СОХРАНЕНИЕ ИЗМЕНЕНИЙ
           print('Данные профиля сохранены');
           Get.back();
-          showToast('Данные сохранены', position: ToastPosition(align: Alignment.bottomCenter));
-
+          showToast('Данные сохранены',
+              position: ToastPosition(align: Alignment.bottomCenter));
         }
       },
       child: Text(
@@ -302,9 +302,10 @@ class Samples {
                                     activeColor: Color(0xff953e37),
                                     thumbColor: Colors.white,
                                     trackColor: Colors.black12,
-                                    onChanged: ( pushValue) {
+                                    onChanged: (pushValue) {
                                       print(pushValue);
-                                    }, value: pushValue,
+                                    },
+                                    value: pushValue,
                                     // onChanged: (bool pushValue) {
                                     //   pushValue = !pushValue;
                                     // },
@@ -330,6 +331,196 @@ class Samples {
       ],
     );
   }
+
+  ///описание купленной товара
+  dynamic activeShop(String image, title, price, date, count) {
+    return SizedBox(
+        width: double.infinity,
+        child: GestureDetector(
+          onTap: () {
+            Get.toNamed('/activeShopDetails', arguments: [
+              image,
+              title,
+              price,
+              date,
+              count,
+            ]);
+          },
+          child: Card(
+            elevation: 4,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Image.asset(
+                          Assets().img + '$image.png',
+                          fit: BoxFit.fill,
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                            color: Color(0xff1e1e1e)),
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        '$price Т',
+                        style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                            color: Color(0xff953e37)),
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        date,
+                        style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            color: Color(0xff8c8c8c)),
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: SizedBox(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              '$count шт',
+                              style: GoogleFonts.roboto(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 18,
+                                  color: Color(0xff595959)),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ));
+  }
+  ///описание купленного товара со штрих-кодом
+  dynamic activeShopDetails(String image, title, price, date, count) {
+    return Column(
+      children: [
+        Image.asset(Assets().img + 'barcode.png'),
+        SizedBox(height: 22,),
+        SizedBox(
+            width: double.infinity,
+            child: Card(
+              elevation: 4,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Image.asset(
+                            Assets().img + '$image.png',
+                            fit: BoxFit.fill,
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: GoogleFonts.roboto(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 18,
+                              color: Color(0xff1e1e1e)),
+                        ),
+                        SizedBox(
+                          height: 2,
+                        ),
+                        Text(
+                          '$price Т',
+                          style: GoogleFonts.roboto(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 18,
+                              color: Color(0xff953e37)),
+                        ),
+                        SizedBox(
+                          height: 2,
+                        ),
+                        Text(
+                          date,
+                          style: GoogleFonts.roboto(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              color: Color(0xff8c8c8c)),
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: SizedBox(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                '$count шт',
+                                style: GoogleFonts.roboto(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 18,
+                                    color: Color(0xff595959)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )),
+      ],
+    );
+  }
+
+
 }
 
 launchWhatsAppUri(String number) async {
