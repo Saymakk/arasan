@@ -428,6 +428,29 @@ class Samples {
           ),
         ));
   }
+
+  ///главный экран кнопки
+  dynamic mainScreenButtons(String image_title, text_title){
+    return Container(
+      width: 110,
+      height: 110,
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
+      padding: EdgeInsets.all(16),
+      child: Column(
+        children: [
+          SvgPicture.asset(Assets().icn + '$image_title.svg'),
+          SizedBox(
+            height: 8,
+          ),
+          Text(
+            '$text_title',
+            style: Styles().cardTitle(),
+          ),
+        ],
+      ),
+    );
+  }
+
   ///описание купленного товара со штрих-кодом
   dynamic activeShopDetails(String image, title, price, date, count) {
     return Column(

@@ -56,6 +56,7 @@ class FavoritesScreen extends StatelessWidget {
                                     SizedBox(height: 30,),
                                     SizedBox(
                                         width: double.infinity,
+                                        height: 45,
                                         child: Samples().unfilledOutlinedButton('2000 Т', true, 'comment', null))
                                   ],
                                 ),
@@ -76,4 +77,5 @@ class FavoritesScreen extends StatelessWidget {
       ),
     );
   }
+
 }
